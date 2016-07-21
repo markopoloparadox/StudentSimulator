@@ -4,8 +4,6 @@
 
 
 Agent::Agent(AZvijezda* _aZvijeda): aZvijezda(_aZvijeda) {
-	//std::cout << sveVrsteJSON.dump(4) << "\n";
-	//std::cout << sveVrsteJSON["Igrac"].dump(4) << "\n";
 	tijelo.setRadius(10);
 	tijelo.setFillColor(sf::Color(r, g, b));
 	x = 0;
@@ -30,21 +28,10 @@ Agent::~Agent() {}
 void Agent::azuriraj() {
 	sp.kreni();
 	tijelo.setPosition(x, y);
-	/*
-	auto novaPratnja = std::make_unique<sf::CircleShape>(3, 3);
-	novaPratnja->setPosition(x+10, y+10);
-	novaPratnja->setFillColor(sf::Color(r, g, b));
-	pratnja.push_back(std::move(novaPratnja));
-
-	if (pratnja.size() > 50)
-		pratnja.erase(pratnja.begin());
-		*/
 }
 
 void Agent::prikazi(sf::RenderWindow* win) {
 	win->draw(tijelo);
-	for (auto& prat : pratnja)
-		win->draw(*prat);
 }
 
 bool Agent::odiDo(unsigned int celijaId) {

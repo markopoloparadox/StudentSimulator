@@ -33,7 +33,6 @@ private:
 	unsigned int F = 0;
 	unsigned int izracunajF(unsigned int);
 
-	
 
 	Celija* celija = nullptr;
 	ACelija* noviRoditelj = nullptr;

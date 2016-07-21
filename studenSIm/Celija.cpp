@@ -3,7 +3,9 @@
 
 
 Celija::Celija(double _x, double _y) {
-	id = brojCelija++;
+	x = _x;
+	y = _y;
+	id = dohvatiPozicijuUMrezi();
 	tijelo.setSize(sf::Vector2f(sirinaCelije, visinaCelije));
 	tijelo.setPosition(_x, _y);
 	tijelo.setFillColor(sf::Color(50, 50, 50));
@@ -29,5 +31,3 @@ void Celija::postaviProhodnost(bool var) {
 		promjeniBoju(50, 50, 50);
 	}
 }
-
-unsigned int Celija::brojCelija = 0;

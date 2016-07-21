@@ -24,10 +24,13 @@ Game::Game() {
 		agenti.back()->postaviStabloP(StudentSP::kreirajStablo(agenti.back().get()));
 	}
 
+	//Optimizacija
+	mapa.reserve(Objekt::redovi * Objekt::stupci);
+
 	//Kreiranje mreže æelija
 	for (auto i = 0; i < Objekt::redovi; ++i) {
 		for (auto j = 0; j < Objekt::stupci; ++j) {
-			mapa.push_back(std::make_unique<Celija>(j * 64, i * 64));
+			mapa.push_back(std::make_unique<Celija>(j * Objekt::sirinaCelije, i * Objekt::visinaCelije));
 			aZvijezda.kreirajACeliju(mapa.back().get());
 		}
 	}

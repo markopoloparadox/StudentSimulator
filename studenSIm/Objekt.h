@@ -34,10 +34,6 @@ protected:
 	double x = -1;
 	double y = -1;
 
-
-	double volumen = -1;
-	double masa = -1;
-
 private:
 	static unsigned int brojObjekata;
 };

@@ -5,11 +5,11 @@ ACelija::ACelija(Celija* _celija) : celija(_celija) { id = celija->dohvatiId(); 
 
 unsigned int ACelija::izracunajH8(unsigned int z) { 
 	int p = celija->dohvatiId();
-	int xP = p % Objekt::stupci;
-	int yP = p / Objekt::stupci;
+	int xP = p % stupci;
+	int yP = p / stupci;
 
-	int xZ = z % Objekt::stupci;
-	int yZ = z / Objekt::stupci;
+	int xZ = z % stupci;
+	int yZ = z / stupci;
 
 	unsigned int trosak = 0;
 
@@ -50,11 +50,11 @@ unsigned int ACelija::izracunajH8(unsigned int z) {
 
 unsigned int ACelija::izracunajH4(unsigned int z) {
 	int p = celija->dohvatiId();
-	int xP = p % Objekt::stupci;
-	int yP = p / Objekt::stupci;
+	int xP = p % stupci;
+	int yP = p / stupci;
 
-	int xZ = z % Objekt::stupci;
-	int yZ = z / Objekt::stupci;
+	int xZ = z % stupci;
+	int yZ = z / stupci;
 
 	unsigned int trosak = 0;
 

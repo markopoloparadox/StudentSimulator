@@ -13,22 +13,15 @@ public:
 	void azuriraj();
 	void prikazi(sf::RenderWindow*);
 
-
+	//Postavljanje umjetne inteligencije
 	void postaviStabloP(StabloPonasanja::Cvor* _cvor) { sp.postaviGlavu(_cvor); }
 
-	void postaviCilj(int _celijaCilj) {
-		celijaCilj = _celijaCilj;
-	}
+	void postaviCilj(int _celijaCilj) { celijaCilj = _celijaCilj; }
 
 	bool odiDo(unsigned int celijaId);
 	
 	AZvijezda* aZvijezda;
 	int celijaCilj = -1;
-
-
-
-
-
 private:
 	static nlohmann::json sveVrsteJSON;
 

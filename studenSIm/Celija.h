@@ -26,6 +26,5 @@ private:
 	sf::RectangleShape tijelo;
 
 	bool prohodnost = true;
-	static unsigned int brojCelija;
 };
 
