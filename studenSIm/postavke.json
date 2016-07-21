@@ -1,4 +1,8 @@
 {
   "sirinaProzora": 800,
-  "visinaProzora":  600
+  "visinaProzora": 600,
+  "redovi": 10,
+  "stupci": 15,
+  "visinaCelije": 64,
+  "sirinaCelije": 64
 }

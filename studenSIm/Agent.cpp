@@ -3,9 +3,7 @@
 #include <memory>
 
 
-Agent::Agent(int a, AZvijezda* _aZvijeda): aZvijezda(_aZvijeda) {
-	//std::cout << sveVrsteJSON.dump(4) << "\n";
-	//std::cout << sveVrsteJSON["Igrac"].dump(4) << "\n";
+Agent::Agent(AZvijezda* _aZvijeda): aZvijezda(_aZvijeda) {
 	tijelo.setRadius(10);
 	tijelo.setFillColor(sf::Color(r, g, b));
 	x = 0;
@@ -13,6 +11,7 @@ Agent::Agent(int a, AZvijezda* _aZvijeda): aZvijezda(_aZvijeda) {
 	tijelo.setPosition(x, y);
 }
 
+/*
 Agent::Agent(std::string _vrsta, std::string _karakter) {
 	if (_vrsta != "") {
 		if (sveVrsteJSON[_vrsta] != "") {
@@ -21,41 +20,27 @@ Agent::Agent(std::string _vrsta, std::string _karakter) {
 		}
 	}
 }
+*/
 
 Agent::~Agent() {}
 
-void Agent::kreirajVrstu(std::string imeVrste) {
-
-
-}
 
 void Agent::azuriraj() {
 	sp.kreni();
 	tijelo.setPosition(x, y);
-	/*
-	auto novaPratnja = std::make_unique<sf::CircleShape>(3, 3);
-	novaPratnja->setPosition(x+10, y+10);
-	novaPratnja->setFillColor(sf::Color(r, g, b));
-	pratnja.push_back(std::move(novaPratnja));
-
-	if (pratnja.size() > 50)
-		pratnja.erase(pratnja.begin());
-		*/
 }
 
 void Agent::prikazi(sf::RenderWindow* win) {
 	win->draw(tijelo);
-	for (auto& prat : pratnja)
-		win->draw(*prat);
 }
 
 bool Agent::odiDo(unsigned int celijaId) {
 	int p = celijaId;
-	double xP = p % 12;
-	double yP = p / 12;
+	double xP = p % stupci;
+	double yP = p / stupci;
 
-	xP = xP * 64 + 32;
-	yP = yP * 64 + 32;
+	xP = xP * sirinaCelije + sirinaCelije / 2;
+	yP = yP * visinaCelije + visinaCelije / 2;
 
 
 	if (x == xP && y == yP) {
@@ -80,7 +65,8 @@ bool Agent::odiDo(unsigned int celijaId) {
 		y = y + tretBrzina;
 	}
 
-	postaviKoord(x, y);
+	postaviXY(x, y);
+
 	return false;
 }
 

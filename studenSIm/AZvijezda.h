@@ -1,24 +1,22 @@
 #pragma once
 #include "ACelija.h"
-#include <vector>
 #include <memory>
 #include <unordered_map>
-class AZvijezda {
+class AZvijezda : public Objekt {
 public:
 	AZvijezda();
-	AZvijezda(unsigned int, unsigned int);
 	~AZvijezda();
 
 	void kreirajACeliju(Celija*);
 	void pocisti();
-	void inicijaliziraj(unsigned int, unsigned int);
 	std::vector<unsigned int> kreirajRutu(unsigned int trenutnaPozicija, unsigned int zeljenaPozicij);
 
-private:
 
+private:
 	std::vector<std::unique_ptr<ACelija>> aCelije;
-	std::vector<unsigned int> pronadjiSusjede(unsigned int);
-	unsigned int redci;
-	unsigned int stupci;
+	//Pronalazak susjeda u 4 smjera
+	std::vector<unsigned int> pronadjiSusjede4(unsigned int);
+	//Pronalazak susjeda u 8 smjera
+	std::vector<unsigned int> pronadjiSusjede8(unsigned int);
 };
 

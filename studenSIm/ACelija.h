@@ -1,21 +1,17 @@
 #pragma once
 #include "Celija.h"
-class ACelija {
+
+class ACelija : public Objekt {
 public:
-	ACelija();
-	ACelija(Celija*, unsigned int, unsigned int);
-	~ACelija();
+	ACelija(Celija*);
+	~ACelija() {};
 
 	void resetiraj();
 
-	unsigned int izracunajH(unsigned int);
-	unsigned int izracunajG();
-	unsigned int izracunajF(unsigned int);
 	unsigned int dohvatiF();
+
 	unsigned int dohvatiG();
 	unsigned int dohvatiId();
-	void postaviF(unsigned int);
-	void postaviG(unsigned int);
 
 	void izracunaj(ACelija* _roditelj, unsigned int);
 
@@ -24,13 +20,21 @@ public:
 	ACelija* roditelj = nullptr;
 
 private:
+	//H heuristicno
 	unsigned int H = 0;
+	unsigned int izracunajH8(unsigned int);
+	unsigned int izracunajH4(unsigned int);
+
+	//Cijena dolaska
 	unsigned int G = 0;
+	unsigned int izracunajG();
+
+	//Sveukupna cijena
 	unsigned int F = 0;
+	unsigned int izracunajF(unsigned int);
+
 
 	Celija* celija = nullptr;
 	ACelija* noviRoditelj = nullptr;
-	unsigned r;
-	unsigned s;
 };
 
