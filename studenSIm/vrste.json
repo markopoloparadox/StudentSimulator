@@ -1,0 +1,12 @@
+{
+  "Igrac": {
+    "ime": "Marko Petrlic",
+    "opis": "Studnet FOI-a",
+    "obi": "Waddup"
+  },
+  "Prijatelj": {
+    "ime": "Igor Matus",
+    "opis": "Logoras",
+    "roditelj": "Igrac"
+  }
+}

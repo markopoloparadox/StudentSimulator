@@ -1,0 +1,10 @@
+{
+  "Troll": {
+    "zdravlje": 20,
+    "napad": "Ovo je napad"
+  },
+  "Auto": {
+    "zdravlje": 10,
+    "napad":  "Ovo je ludo"
+  }
+}
