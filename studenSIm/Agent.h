@@ -26,8 +26,6 @@ public:
 	int celijaCilj = -1;
 
 
-	const double XCilj() const { return xCilj; }
-	const double YCilj() const { return yCilj; }
 
 
 
@@ -42,14 +40,11 @@ private:
 	Vrsta vrsta;
 	StabloPonasanja sp;
 	std::vector<std::unique_ptr<sf::CircleShape>> pratnja;
-	double tretBrzina = 1;
+	double tretBrzina = 5;
 
 	double r = rand() % 255;
 	double g = rand() % 255;
 	double b = rand() % 255;
-
-	double xCilj = -1;
-	double yCilj = -1;
 
 };
 

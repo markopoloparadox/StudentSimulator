@@ -1,7 +1,7 @@
 #include "ACelija.h"
 
 
-ACelija::ACelija(Celija* _celija): celija(_celija){ }
+ACelija::ACelija(Celija* _celija) : celija(_celija) { id = celija->dohvatiId(); }
 
 unsigned int ACelija::izracunajH8(unsigned int z) { 
 	int p = celija->dohvatiId();
@@ -106,10 +106,8 @@ unsigned int ACelija::dohvatiG() {
 }
 
 unsigned int ACelija::dohvatiId() {
-	return celija->dohvatiId();
+	return id;
 }
-
-void ACelija::postaviF(unsigned int _F) { F = _F; }
 
 
 void ACelija::resetiraj() { roditelj = nullptr; }

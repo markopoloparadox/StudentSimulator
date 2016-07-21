@@ -11,6 +11,7 @@ public:
 	void pocisti();
 	std::vector<unsigned int> kreirajRutu(unsigned int trenutnaPozicija, unsigned int zeljenaPozicij);
 
+
 private:
 	std::vector<std::unique_ptr<ACelija>> aCelije;
 	//Pronalazak susjeda u 4 smjera

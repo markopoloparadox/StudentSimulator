@@ -18,14 +18,13 @@ Game::Game() {
 	win->setFramerateLimit(60);
 	win->setView(kamera);
 
-
-	for (int i = 0; i < 10; ++i) {
+	//Kreiranje agenta
+	for (int i = 0; i < 100; ++i) {
 		agenti.push_back(std::make_unique<Agent>(&aZvijezda));
 		agenti.back()->postaviStabloP(StudentSP::kreirajStablo(agenti.back().get()));
 	}
 
-
-
+	//Kreiranje mreže æelija
 	for (auto i = 0; i < Objekt::redovi; ++i) {
 		for (auto j = 0; j < Objekt::stupci; ++j) {
 			mapa.push_back(std::make_unique<Celija>(j * 64, i * 64));
@@ -57,11 +56,9 @@ void Game::upravljajUlazom() {
 		if (event.type == sf::Event::MouseButtonPressed) {
 			sf::Vector2i pixel_pos = sf::Mouse::getPosition(*win);
 			sf::Vector2f coord_pos = win->mapPixelToCoords(pixel_pos);
-			unsigned int w = 64;
-			unsigned int h = 64;
 			if (coord_pos.x < 0 || coord_pos.y < 0) {
 			} else {
-				unsigned int celijaId = std::floor(coord_pos.x / w) + std::floor(coord_pos.y / h) * 12;
+				unsigned int celijaId = std::floor(coord_pos.x / Objekt::sirinaCelije) + std::floor(coord_pos.y / Objekt::visinaCelije) * Objekt::stupci;
 				bool tretProh = mapa[celijaId]->dohvatiProhodnost();
 				if (tretProh) {
 					tretProh = false;
@@ -75,6 +72,7 @@ void Game::upravljajUlazom() {
 }
 
 void Game::azuriraj() {
+
 	for (auto& agent : agenti) {
 		agent->azuriraj();
 	}

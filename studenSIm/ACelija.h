@@ -9,9 +9,9 @@ public:
 	void resetiraj();
 
 	unsigned int dohvatiF();
+
 	unsigned int dohvatiG();
 	unsigned int dohvatiId();
-	void postaviF(unsigned int);
 
 	void izracunaj(ACelija* _roditelj, unsigned int);
 
@@ -32,8 +32,7 @@ private:
 	//Sveukupna cijena
 	unsigned int F = 0;
 	unsigned int izracunajF(unsigned int);
-	
-	
+
 	
 
 	Celija* celija = nullptr;

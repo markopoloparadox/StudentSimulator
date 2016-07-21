@@ -49,11 +49,11 @@ void Agent::prikazi(sf::RenderWindow* win) {
 
 bool Agent::odiDo(unsigned int celijaId) {
 	int p = celijaId;
-	double xP = p % 12;
-	double yP = p / 12;
+	double xP = p % stupci;
+	double yP = p / stupci;
 
-	xP = xP * 64 + 32;
-	yP = yP * 64 + 32;
+	xP = xP * sirinaCelije + sirinaCelije / 2;
+	yP = yP * visinaCelije + visinaCelije / 2;
 
 
 	if (x == xP && y == yP) {
