@@ -6,6 +6,8 @@
 
 
 int main() {
+	int init;
+
 	PodatkovniSloj::upisiULog("----------POCETAK----------");
 	srand(time(NULL));
 
