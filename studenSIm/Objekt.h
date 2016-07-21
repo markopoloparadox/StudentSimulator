@@ -1,33 +1,43 @@
 #pragma once
-#include <tuple>
 class Objekt {
 public:
 	Objekt();
 	~Objekt();
 
-	void postaviKoord(double _x, double _y) {
-		x = _x;
-		y = _y;
-	}
+	//Broj æelija po stupcu su poznate objektu
+	static unsigned int redovi;
+	static unsigned int stupci;
 
-	const double XCilj() const { return xCilj; }
-	const double YCilj() const { return yCilj; }
+	//Veliæina æelije su poznate objektu
+	static unsigned int sirinaCelije;
+	static unsigned int visinaCelije;
+
+	//Svaki objekt ima svoj ID
+	unsigned int dohvatiId() const { return stvarniId; }
+
+	//Svaki objekt ima koordinate gdje se nalazi
 	const double X() const { return x; }
 	const double Y() const { return y; }
+	void postaviXY(double, double);
 
-	const unsigned int dohvatiId() const { return id; }
+	//Svaki objekt može prikazati svoju lokaciju kao poziciju unutar mreže æelija
+	unsigned int dohvatiPozicijuUMrezi();
+	
 
 protected:
+	//Relativni id objekta
+	unsigned int id = 0;
+	//Stvarni id objekta
+	unsigned int stvarniId = 0;
+
+	//Koordinate objekta
 	double x = -1;
 	double y = -1;
-	double xCilj = -1;
-	double yCilj = -1;
+
 
 	double volumen = -1;
 	double masa = -1;
 
-	unsigned int id = 0;
-
 private:
-	static unsigned int brojObjektaKreiranih;
+	static unsigned int brojObjekata;
 };

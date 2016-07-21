@@ -1,32 +1,31 @@
 #pragma once
 #include <vector>
 #include "SFML\Graphics.hpp"
-class Celija {
+#include "Objekt.h"
+class Celija : public Objekt{
 public:
-	Celija();
 	Celija(double, double);
-	~Celija();
+	~Celija() {};
 
+	//Potrebne metode koja svaka klasa treba implementirati
 	void azuriraj();
 	void prikazi(sf::RenderWindow*);
-	unsigned int dohvatiId();
+
+	//Dohvaca se relativni ID
+	unsigned int dohvatiId() { return id; }
+		
+	//Postavljanje prohodnosti
+	void postaviProhodnost(bool);
 	bool dohvatiProhodnost() { return prohodnost; }
 
+	//Promijena boja
 	void promjeniBoju(unsigned int, unsigned int, unsigned int);
-	void postaviProhodnost(bool);
+	
 
 private:
-	unsigned int id = 0;
-	unsigned int w = 64;
-	unsigned int h = 64;
-
-	double xCentar = -1;
-	double yCentar = -1;
-
-	bool prohodnost = true;
-
 	sf::RectangleShape tijelo;
 
-	static unsigned int brojCelijaKreiranih;
+	bool prohodnost = true;
+	static unsigned int brojCelija;
 };
 

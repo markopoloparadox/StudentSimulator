@@ -3,7 +3,7 @@
 #include <memory>
 
 
-Agent::Agent(int a, AZvijezda* _aZvijeda): aZvijezda(_aZvijeda) {
+Agent::Agent(AZvijezda* _aZvijeda): aZvijezda(_aZvijeda) {
 	//std::cout << sveVrsteJSON.dump(4) << "\n";
 	//std::cout << sveVrsteJSON["Igrac"].dump(4) << "\n";
 	tijelo.setRadius(10);
@@ -13,6 +13,7 @@ Agent::Agent(int a, AZvijezda* _aZvijeda): aZvijezda(_aZvijeda) {
 	tijelo.setPosition(x, y);
 }
 
+/*
 Agent::Agent(std::string _vrsta, std::string _karakter) {
 	if (_vrsta != "") {
 		if (sveVrsteJSON[_vrsta] != "") {
@@ -21,13 +22,10 @@ Agent::Agent(std::string _vrsta, std::string _karakter) {
 		}
 	}
 }
+*/
 
 Agent::~Agent() {}
 
-void Agent::kreirajVrstu(std::string imeVrste) {
-
-
-}
 
 void Agent::azuriraj() {
 	sp.kreni();
@@ -80,7 +78,8 @@ bool Agent::odiDo(unsigned int celijaId) {
 		y = y + tretBrzina;
 	}
 
-	postaviKoord(x, y);
+	postaviXY(x, y);
+
 	return false;
 }
 

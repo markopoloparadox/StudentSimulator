@@ -42,7 +42,7 @@ public:
 			p = 0;
 			ruta.clear();
 			agent->aZvijezda->pocisti();
-			ruta = agent->aZvijezda->kreirajRutu(agent->nalazimSe(12), agent->celijaCilj);
+			ruta = agent->aZvijezda->kreirajRutu(agent->dohvatiPozicijuUMrezi(), agent->celijaCilj);
 		}
 
 		Status azuriraj() override {

@@ -3,14 +3,12 @@
 
 AZvijezda::AZvijezda() {}
 
-AZvijezda::AZvijezda(unsigned int _r, unsigned int _s): redci(_r), stupci(_s) {}
-
 
 AZvijezda::~AZvijezda() {}
 
 
 void AZvijezda::kreirajACeliju(Celija* celija) {
-	aCelije.push_back(std::make_unique<ACelija>(celija, redci, stupci));
+	aCelije.push_back(std::make_unique<ACelija>(celija));
 }
 
 void AZvijezda::pocisti() {
@@ -18,16 +16,9 @@ void AZvijezda::pocisti() {
 		aCelija->resetiraj();
 }
 
-void AZvijezda::inicijaliziraj(unsigned int _r, unsigned int _s) {
-	redci = _r;
-	stupci = _s;
-}
-
-
-
 std::vector<unsigned int> AZvijezda::kreirajRutu(unsigned int trenutnaPozicija, unsigned int zeljenaPozicija) {
 	auto tP = trenutnaPozicija;
-	if (zeljenaPozicija < 0 || zeljenaPozicija >= redci*stupci) {
+	if (zeljenaPozicija < 0 || zeljenaPozicija >= redovi * stupci) {
 		return std::vector<unsigned int>(tP);
 	}
 
@@ -50,7 +41,6 @@ std::vector<unsigned int> AZvijezda::kreirajRutu(unsigned int trenutnaPozicija, 
 	};
 
 	otvorenaLista.push_back(AZvijezda::aCelije[trenutnaPozicija].get());
-	otvorenaLista.back()->postaviG(0);
 
 	while (1) {
 		if (otvorenaLista.size() == 0) {
@@ -73,7 +63,7 @@ std::vector<unsigned int> AZvijezda::kreirajRutu(unsigned int trenutnaPozicija, 
 			break;
 		}
 
-		auto susjedi = pronadjiSusjede(trenutnaPozicija);
+		auto susjedi = pronadjiSusjede8(trenutnaPozicija);
 		for (auto& susjed : susjedi) {
 			if (aCelije[susjed]->prohodan()) {
 				if (!daLiJeUListiZ(susjed)) {
@@ -92,16 +82,64 @@ std::vector<unsigned int> AZvijezda::kreirajRutu(unsigned int trenutnaPozicija, 
 	}
 
 	std::reverse(ruta.begin(), ruta.end());
-	/*
-	for (auto elem : ruta) {
-		std::cout << elem << " ";
-	}
-	std::cout << std::endl;
-	*/
+
 	return ruta;
 }
 
-std::vector<unsigned int> AZvijezda::pronadjiSusjede(unsigned int p) {
+std::vector<unsigned int> AZvijezda::pronadjiSusjede4(unsigned int p) {
+	/*
+		X  X u  X X
+		X  l  p  r  X
+		X  X d  X X
+		X  X  X  X  X
+	*/
+	std::vector<unsigned int> susjedi;
+
+
+	int u = p - stupci;
+	int l = p - 1;
+	int r = p + 1;
+	int d = p + stupci;
+
+	if (p == 0) {
+		susjedi.push_back(r);
+		susjedi.push_back(d);
+	} else if (p == stupci - 1) {
+		susjedi.push_back(d);
+		susjedi.push_back(l);
+	} else if (p == (redovi - 1) * stupci) {
+		susjedi.push_back(u);
+		susjedi.push_back(r);
+	} else if (p == (redovi  * stupci) - 1) {
+		susjedi.push_back(l);
+		susjedi.push_back(u);
+	} else if (p % stupci == 0) {
+		susjedi.push_back(u);
+		susjedi.push_back(r);
+		susjedi.push_back(d);
+	} else if (p % stupci == stupci - 1) {
+		susjedi.push_back(d);
+		susjedi.push_back(l);
+		susjedi.push_back(u);
+	} else if (p < stupci) {
+		susjedi.push_back(r);
+		susjedi.push_back(d);
+		susjedi.push_back(l);
+	} else if (p >(redovi - 1) * stupci) {
+		susjedi.push_back(l);
+		susjedi.push_back(u);
+		susjedi.push_back(r);
+	} else {
+		susjedi.push_back(u);
+		susjedi.push_back(r);
+		susjedi.push_back(d);
+		susjedi.push_back(l);
+	}
+
+	return susjedi;
+}
+
+std::vector<unsigned int> AZvijezda::pronadjiSusjede8(unsigned int p) {
 	/*
 		X  d1 u  d2 X
 		X  l  p  r  X
@@ -128,11 +166,11 @@ std::vector<unsigned int> AZvijezda::pronadjiSusjede(unsigned int p) {
 		susjedi.push_back(d);
 		susjedi.push_back(d3);
 		susjedi.push_back(l);
-	} else if (p == (redci - 1) * stupci) {
+	} else if (p == (redovi - 1) * stupci) {
 		susjedi.push_back(u);
 		susjedi.push_back(d2);
 		susjedi.push_back(r);
-	} else if (p == (redci * stupci) - 1) {
+	} else if (p == (redovi  * stupci) - 1) {
 		susjedi.push_back(l);
 		susjedi.push_back(d1);
 		susjedi.push_back(u);
@@ -154,7 +192,7 @@ std::vector<unsigned int> AZvijezda::pronadjiSusjede(unsigned int p) {
 		susjedi.push_back(d);
 		susjedi.push_back(d3);
 		susjedi.push_back(l);
-	} else if (p > (redci - 1) * stupci) {
+	} else if (p > (redovi - 1) * stupci) {
 		susjedi.push_back(l);
 		susjedi.push_back(d1);
 		susjedi.push_back(u);

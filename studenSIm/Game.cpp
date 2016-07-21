@@ -4,31 +4,34 @@
 
 
 Game::Game() {
-	aZvijezda.inicijaliziraj(redki, stupci);
-
+	//Uèitavanje postavki
 	nlohmann::json j = PodatkovniSloj::dohvatiVrijednostDat("postavke.json");
+	Objekt::redovi = j["redovi"].get<unsigned int>();
+	Objekt::stupci = j["stupci"].get<unsigned int>();
+	Objekt::visinaCelije = j["visinaCelije"].get<unsigned int>();
+	Objekt::sirinaCelije = j["sirinaCelije"].get<unsigned int>();
 	unsigned int sirina = j["sirinaProzora"].get<unsigned int>();
 	unsigned int visina = j["visinaProzora"].get<unsigned int>();
+
+	//Kreiranje prozora
 	win = std::make_unique<sf::RenderWindow>(sf::VideoMode(sirina, visina), "Student Simulator");
+	win->setFramerateLimit(60);
+	win->setView(kamera);
+
 
 	for (int i = 0; i < 10; ++i) {
-		agenti.push_back(std::make_unique<Agent>(2, &aZvijezda));
+		agenti.push_back(std::make_unique<Agent>(&aZvijezda));
 		agenti.back()->postaviStabloP(StudentSP::kreirajStablo(agenti.back().get()));
 	}
 
-	win->setFramerateLimit(60);
 
 
-	for (auto i = 0; i < redki; ++i) {
-		for (auto j = 0; j < stupci; ++j) {
+	for (auto i = 0; i < Objekt::redovi; ++i) {
+		for (auto j = 0; j < Objekt::stupci; ++j) {
 			mapa.push_back(std::make_unique<Celija>(j * 64, i * 64));
 			aZvijezda.kreirajACeliju(mapa.back().get());
 		}
 	}
-
-	win->setView(kamera);
-
-
 
 }
 
