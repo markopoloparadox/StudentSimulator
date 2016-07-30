@@ -151,16 +151,22 @@
     <ClCompile Include="AZvijezda.cpp" />
     <ClCompile Include="Celija.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GeneralNpcSP.cpp" />
+    <ClCompile Include="jsonExtend.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mapa.cpp" />
     <ClCompile Include="Objekt.cpp" />
     <ClCompile Include="PodatkovniSloj.cpp" />
+    <ClCompile Include="Predmet.cpp" />
     <ClCompile Include="StabloPonasanja.cpp" />
     <ClCompile Include="StudentSP.cpp" />
+    <ClCompile Include="Tip.cpp" />
     <ClCompile Include="Vrsta.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cudovista.json" />
     <None Include="karakteri.json" />
+    <None Include="mapa.json" />
     <None Include="packages.config" />
     <None Include="postavke.json" />
     <None Include="vrste.json" />
@@ -172,17 +178,28 @@
     <ClInclude Include="Celija.h" />
     <ClInclude Include="date.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GeneralNpcSP.h" />
     <ClInclude Include="json.h" />
     <ClInclude Include="jsonExtend.h" />
+    <ClInclude Include="Mapa.h" />
     <ClInclude Include="Objekt.h" />
     <ClInclude Include="PodatkovniSloj.h" />
+    <ClInclude Include="Predmet.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="StabloPonasanja.h" />
     <ClInclude Include="StudentSP.h" />
+    <ClInclude Include="Tip.h" />
     <ClInclude Include="Vrsta.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="studenSIm.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="1.png" />
+    <Image Include="2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="arial.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

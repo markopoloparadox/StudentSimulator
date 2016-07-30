@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\slike">
+      <UniqueIdentifier>{bc682fdf-2a8a-45fb-8cd2-5d335dfccf3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\font">
+      <UniqueIdentifier>{d75976ba-8958-4670-af0c-4a864ae80e2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -48,6 +54,21 @@
     <ClCompile Include="ACelija.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneralNpcSP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="jsonExtend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Predmet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -61,6 +82,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="karakteri.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="mapa.json">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
@@ -107,10 +131,35 @@
     <ClInclude Include="ACelija.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneralNpcSP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Predmet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="studenSIm.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="1.png">
+      <Filter>Resource Files\slike</Filter>
+    </Image>
+    <Image Include="2.png">
+      <Filter>Resource Files\slike</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="arial.ttf">
+      <Filter>Resource Files\font</Filter>
+    </Font>
   </ItemGroup>
 </Project>

@@ -6,11 +6,11 @@
 
 class Vrsta {
 public:
-	Vrsta(nlohmann::json j);
+	Vrsta(nlohmann::json);
 	Vrsta();
 	~Vrsta();
 
-	void popuni(nlohmann::json j);
+	void popuni(nlohmann::json);
 	
 
 private:

@@ -6,9 +6,14 @@
 Agent::Agent(AZvijezda* _aZvijeda): aZvijezda(_aZvijeda) {
 	tijelo.setRadius(10);
 	tijelo.setFillColor(sf::Color(r, g, b));
-	x = 0;
-	y = 0;
+	x = 50;
+	y = 50;
 	tijelo.setPosition(x, y);
+	/*
+	font.loadFromFile("arial.ttf");
+	text.setFont(font);
+	text.setCharacterSize(30);
+	*/
 }
 
 /*
@@ -32,6 +37,7 @@ void Agent::azuriraj() {
 
 void Agent::prikazi(sf::RenderWindow* win) {
 	win->draw(tijelo);
+	win->draw(text);
 }
 
 bool Agent::odiDo(unsigned int celijaId) {
@@ -68,6 +74,11 @@ bool Agent::odiDo(unsigned int celijaId) {
 	postaviXY(x, y);
 
 	return false;
+}
+
+void Agent::postaviText(std::string sadrzaj) {
+	text.setString(sadrzaj);
+	text.setPosition(x - 30, y - 40);
 }
 
 nlohmann::json Agent::sveVrsteJSON = PodatkovniSloj::dohvatiVrijednostDat("vrste.json");

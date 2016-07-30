@@ -8,4 +8,3 @@ public:
 	static nlohmann::json dohvatiVrijednostDat(std::string);
 	static void upisiULog(std::string) noexcept;
 };
-

@@ -4,5 +4,6 @@
   "redovi": 10,
   "stupci": 15,
   "visinaCelije": 64,
-  "sirinaCelije": 64
+  "sirinaCelije": 64,
+  "brzinaSlike": 60
 }

@@ -35,7 +35,7 @@ std::vector<unsigned int> AZvijezda::kreirajRutu(unsigned int trenutnaPozicija, 
 	std::vector<unsigned int> ruta;
 
 	otvorenaLista.reserve(50);
-	zatvorenaLista.reserve(200);
+	zatvorenaLista.reserve(400);
 	ruta.reserve(50);
 	
 	auto daLiJeUListiZ = [&zatvorenaListaId](unsigned int id) -> bool {

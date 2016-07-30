@@ -26,7 +26,7 @@ public:
 	public:
 		postaviCilj(Agent* _agent) : agent(_agent) {}
 		Status azuriraj() override {
-			agent->postaviCilj(rand() % 150);
+			agent->postaviCilj(rand() % (Objekt::stupci * Objekt::redovi));
 			//std::cout << agent->dohvatiId() << ": Sad ima cilja u zivotu :D\n";
 			return Status::Uspjeh;
 		}

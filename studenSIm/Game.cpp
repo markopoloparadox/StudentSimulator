@@ -1,38 +1,27 @@
 #include "Game.h"
 #include "PodatkovniSloj.h"
 #include "AZvijezda.h"
+#include "StudentSP.h"
+#include "GeneralNpcSP.h"
 
 
 Game::Game() {
 	//Uèitavanje postavki
 	nlohmann::json j = PodatkovniSloj::dohvatiVrijednostDat("postavke.json");
-	Objekt::redovi = j["redovi"].get<unsigned int>();
-	Objekt::stupci = j["stupci"].get<unsigned int>();
-	Objekt::visinaCelije = j["visinaCelije"].get<unsigned int>();
-	Objekt::sirinaCelije = j["sirinaCelije"].get<unsigned int>();
 	unsigned int sirina = j["sirinaProzora"].get<unsigned int>();
 	unsigned int visina = j["visinaProzora"].get<unsigned int>();
+	
 
 	//Kreiranje prozora
 	win = std::make_unique<sf::RenderWindow>(sf::VideoMode(sirina, visina), "Student Simulator");
-	win->setFramerateLimit(60);
+	win->setFramerateLimit(j["brzinaSlike"].get<unsigned int>());
+	kamera.setCenter(sf::Vector2f(1000, 1000));
 	win->setView(kamera);
 
 	//Kreiranje agenta
 	for (int i = 0; i < 100; ++i) {
-		agenti.push_back(std::make_unique<Agent>(&aZvijezda));
+		agenti.push_back(std::make_unique<Agent>(&mapa.aZvijezda));
 		agenti.back()->postaviStabloP(StudentSP::kreirajStablo(agenti.back().get()));
-	}
-
-	//Optimizacija
-	mapa.reserve(Objekt::redovi * Objekt::stupci);
-
-	//Kreiranje mreže æelija
-	for (auto i = 0; i < Objekt::redovi; ++i) {
-		for (auto j = 0; j < Objekt::stupci; ++j) {
-			mapa.push_back(std::make_unique<Celija>(j * Objekt::sirinaCelije, i * Objekt::visinaCelije));
-			aZvijezda.kreirajACeliju(mapa.back().get());
-		}
 	}
 
 }
@@ -62,13 +51,13 @@ void Game::upravljajUlazom() {
 			if (coord_pos.x < 0 || coord_pos.y < 0) {
 			} else {
 				unsigned int celijaId = std::floor(coord_pos.x / Objekt::sirinaCelije) + std::floor(coord_pos.y / Objekt::visinaCelije) * Objekt::stupci;
-				bool tretProh = mapa[celijaId]->dohvatiProhodnost();
+				bool tretProh = mapa.celije[celijaId]->dohvatiProhodnost();
 				if (tretProh) {
 					tretProh = false;
 				} else {
 					tretProh = true;
 				}
-				mapa[celijaId]->postaviProhodnost(tretProh);
+				mapa.celije[celijaId]->postaviProhodnost(tretProh);
 			}
 		}
 	}
@@ -81,14 +70,14 @@ void Game::azuriraj() {
 	}
 		
 
-	for (auto& celija : mapa)
+	for (auto& celija : mapa.celije)
 		celija->azuriraj();
 
 }
 
 void Game::prikazi() {
 	win->clear();
-	for (auto& celija : mapa)
+	for (auto& celija : mapa.celije)
 		celija->prikazi(win.get());
 
 	for (auto& agent : agenti)

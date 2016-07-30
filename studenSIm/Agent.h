@@ -10,8 +10,8 @@ public:
 	~Agent();
 
 	//Potrebne metode koja svaka klasa treba implementirati
-	void azuriraj();
-	void prikazi(sf::RenderWindow*);
+	void azuriraj() override;
+	void prikazi(sf::RenderWindow*) override;
 
 	//Postavljanje umjetne inteligencije
 	void postaviStabloP(StabloPonasanja::Cvor* _cvor) { sp.postaviGlavu(_cvor); }
@@ -20,8 +20,13 @@ public:
 
 	bool odiDo(unsigned int celijaId);
 	
+	void postaviText (std::string sadrzaj) override;
+	
+	unsigned int dosada = 0;
+
 	AZvijezda* aZvijezda;
 	int celijaCilj = -1;
+	
 private:
 	static nlohmann::json sveVrsteJSON;
 
@@ -33,11 +38,10 @@ private:
 	Vrsta vrsta;
 	StabloPonasanja sp;
 	std::vector<std::unique_ptr<sf::CircleShape>> pratnja;
-	double tretBrzina = 5;
+	double tretBrzina = 15;
 
 	double r = rand() % 255;
 	double g = rand() % 255;
 	double b = rand() % 255;
-
 };
 

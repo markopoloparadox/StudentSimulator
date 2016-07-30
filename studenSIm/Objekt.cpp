@@ -2,7 +2,9 @@
 #include <iostream>
 
 
-Objekt::Objekt() : stvarniId(brojObjekata++) {}
+Objekt::Objekt() : stvarniId(brojObjekata++) {
+	
+}
 Objekt::~Objekt() {}
 
 void Objekt::postaviXY(double _x, double _y) { x = _x; y = _y; }

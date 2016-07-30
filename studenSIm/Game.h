@@ -1,8 +1,6 @@
 #pragma once
-#include <SFML\Graphics.hpp>
-#include <memory>
 #include "Agent.h"
-#include "StudentSP.h"
+#include "Mapa.h"
 
 class Game {
 public:
@@ -19,7 +17,10 @@ public:
 private:
 	std::unique_ptr<sf::RenderWindow> win;
 	std::vector<std::unique_ptr<Agent>> agenti;
-	std::vector<std::unique_ptr<Celija>> mapa;
-	AZvijezda aZvijezda;
 	sf::View kamera;
+
+	Mapa mapa;
+	AZvijezda aZvijezda;
+
+	
 };

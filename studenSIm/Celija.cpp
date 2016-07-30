@@ -8,7 +8,8 @@ Celija::Celija(double _x, double _y) {
 	id = dohvatiPozicijuUMrezi();
 	tijelo.setSize(sf::Vector2f(sirinaCelije, visinaCelije));
 	tijelo.setPosition(_x, _y);
-	tijelo.setFillColor(sf::Color(50, 50, 50));
+	textura.loadFromFile("1.png");
+	tijelo.setTexture(&textura);
 }
 
 void Celija::azuriraj() {
@@ -16,7 +17,9 @@ void Celija::azuriraj() {
 }
 
 void Celija::prikazi(sf::RenderWindow* win) {
-	win->draw(tijelo);
+	for (auto elem : pozadinaSloj) {
+		elem->prikazi(win);
+	}
 }
 void Celija::promjeniBoju(unsigned int r, unsigned int g, unsigned int b) {
 	tijelo.setFillColor(sf::Color(r, g, b));
@@ -24,10 +27,10 @@ void Celija::promjeniBoju(unsigned int r, unsigned int g, unsigned int b) {
 }
 
 void Celija::postaviProhodnost(bool var) {
-	prohodnost = var;
+	prohodan = var;
 	if (var == false) {
-		promjeniBoju(255, 255, 255);
+		textura.loadFromFile("2.png");
 	} else {
-		promjeniBoju(50, 50, 50);
+		textura.loadFromFile("1.png");
 	}
 }

@@ -51,3 +51,5 @@ void PodatkovniSloj::upisiULog(std::string poruka) noexcept {
 	auto tp = system_clock::now();
 	dat << '\n' << '\n' << tp << '\n' << poruka;
 }
+
+
