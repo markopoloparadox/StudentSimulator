@@ -12,6 +12,15 @@ void Tip::popuniFunkcije() {
 	auto f2 = [this](std::string _unikatan) {unikatan = pretvoriUBool(_unikatan); };
 	funkcije.insert({ "unikatan", f2 });
 
+	auto f3 = [this](std::string _visina) {visina = pretvoriUUInt(_visina); };
+	funkcije.insert({ "visina", f3 });
+
+	auto f4 = [this](std::string _sirina) {sirina = pretvoriUUInt(_sirina); };
+	funkcije.insert({ "sirina", f4 });
+
+	auto f5 = [this](std::string _ime) {ime = _ime; };
+	funkcije.insert({ "ime", f5 });
+
 }
 
 

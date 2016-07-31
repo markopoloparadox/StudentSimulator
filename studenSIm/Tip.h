@@ -11,6 +11,9 @@ public:
 
 	bool prohodan = true;
 	bool unikatan = true;
+	unsigned int visina = 0;
+	unsigned int sirina = 0;
+	std::string ime = "Placeholder";
 private:
 	void popuniFunkcije();
 	std::unordered_map<std::string, std::function<void(std::string)>> funkcije;

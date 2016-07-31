@@ -12,6 +12,8 @@ Game::Game() {
 	unsigned int visina = j["visinaProzora"].get<unsigned int>();
 	
 
+	mapa.inicijaliziraj();
+
 	//Kreiranje prozora
 	win = std::make_unique<sf::RenderWindow>(sf::VideoMode(sirina, visina), "Student Simulator");
 	win->setFramerateLimit(j["brzinaSlike"].get<unsigned int>());
@@ -19,7 +21,7 @@ Game::Game() {
 	win->setView(kamera);
 
 	//Kreiranje agenta
-	for (int i = 0; i < 100; ++i) {
+	for (int i = 0; i < 10; ++i) {
 		agenti.push_back(std::make_unique<Agent>(&mapa.aZvijezda));
 		agenti.back()->postaviStabloP(StudentSP::kreirajStablo(agenti.back().get()));
 	}

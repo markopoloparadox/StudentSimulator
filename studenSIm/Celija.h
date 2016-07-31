@@ -18,24 +18,15 @@ public:
 	void postaviProhodnost(bool);
 	bool dohvatiProhodnost() { return prohodan; }
 
-	//Promijena boja
-	void promjeniBoju(unsigned int, unsigned int, unsigned int);
 
 	void ubaciUPozadinaSloj(Predmet* _predmet) { pozadinaSloj.push_back(_predmet); }
-	void ubaciUSrednjiSloj(Predmet* _predmet) { srednjiSloj.push_back(_predmet); }
-	void ubaciUIznadSloj(Predmet* _predmet) { iznadSloj.push_back(_predmet); }
-	
 
 private:
-	sf::RectangleShape tijelo;
-	sf::Texture textura;
 
 
 	//Slojevi za prikaz
 	std::vector<Predmet* > pozadinaSloj;
-	//U slijedu y koordinata
-	std::vector<Predmet* > srednjiSloj;
-	std::vector<Predmet* > iznadSloj;
+
 	bool prohodan = true;
 };
 

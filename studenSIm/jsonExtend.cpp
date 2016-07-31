@@ -29,5 +29,5 @@ bool pretvoriUBool(std::string vri) {
 }
 
 unsigned int pretvoriUUInt(std::string vri) {
-	return 0;
+	return std::stoul(vri);
 }

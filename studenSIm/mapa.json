@@ -28,22 +28,34 @@
       "tileheight": 64,
       "tileproperties": {
         "0": {
+          "ime": "trava",
           "prohodan": true,
-          "unikatan": false
+          "sirina": 64,
+          "unikatan": false,
+          "visina": 64
         },
         "1": {
+          "ime": "zid",
           "prohodan": false,
-          "unikatan": false
+          "sirina": 64,
+          "unikatan": false,
+          "visina": 64
         }
       },
       "tilepropertytypes": {
         "0": {
+          "ime": "string",
           "prohodan": "bool",
-          "unikatan": "bool"
+          "sirina": "int",
+          "unikatan": "bool",
+          "visina": "int"
         },
         "1": {
+          "ime": "string",
           "prohodan": "bool",
-          "unikatan": "bool"
+          "sirina": "int",
+          "unikatan": "bool",
+          "visina": "int"
         }
       },
       "tiles": {

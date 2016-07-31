@@ -1,16 +1,12 @@
 #include "Predmet.h"
 
-Predmet::Predmet(nlohmann::json j, unsigned int Id) {
-	tip.popuni(j, Id);
+Predmet::Predmet(nlohmann::json _j, unsigned int Id, sf::Texture* tex) {
+	tip.popuni(_j, Id);
+	ime = tip.ime;
 
-	tijelo = std::make_unique<sf::RectangleShape>();
-	tijelo->setSize(sf::Vector2f(sirinaCelije, visinaCelije));
+	tijelo.setSize(sf::Vector2f(tip.sirina, tip.visina));
+	tijelo.setTexture(tex);
 
-	std::string sId = std::to_string(Id - 1);
-	std::string putanja = j["tilesets"][0]["tiles"][sId]["image"];
-
-	tekstura.loadFromFile(putanja);
-	tijelo->setTexture(&tekstura);
 }
 
 Predmet::~Predmet() {}
@@ -18,6 +14,5 @@ Predmet::~Predmet() {}
 void Predmet::postaviXY(double _x, double _y) {
 	x = _x; 
 	y = _y;
-	tijelo->setPosition(x, y);
-
+	tijelo.setPosition(x, y);
 }
