@@ -21,3 +21,12 @@ void Celija::prikazi(sf::RenderWindow* win) {
 void Celija::postaviProhodnost(bool var) {
 	prohodan = var;
 }
+
+void Celija::postaviProhodnostAuto() {
+	auto proh = true;
+	for (auto elem : pozadinaSloj) {
+		if (!elem->dohvatiProhodnost())
+			proh = false;
+	}
+	prohodan = proh;
+}

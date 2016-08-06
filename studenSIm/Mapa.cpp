@@ -50,10 +50,11 @@ void Mapa::kreirajTexture() {
 
 void Mapa::kreirajPredmete() {
 	auto podaci = jPos["layers"][0]["data"];
+	unsigned int s = podaci.size();
 
 	for (auto i = 0; i < Objekt::redovi; ++i) {
 		for (auto j = 0; j < Objekt::stupci; ++j) {
-			unsigned int elem = podaci[i];
+			unsigned int elem = podaci[i * Objekt::stupci + j];
 			if (elem != 0) {
 				auto predmet = std::make_unique<Predmet>(jPos, elem, teksture[elem].get());
 				predmet->postaviXY(j * Objekt::visinaCelije, i * Objekt::sirinaCelije);

@@ -19,14 +19,13 @@ public:
 	bool dohvatiProhodnost() { return prohodan; }
 
 
-	void ubaciUPozadinaSloj(Predmet* _predmet) { pozadinaSloj.push_back(_predmet); }
+	void ubaciUPozadinaSloj(Predmet* _predmet) { pozadinaSloj.push_back(_predmet); postaviProhodnostAuto();}
 
 private:
-
-
 	//Slojevi za prikaz
 	std::vector<Predmet* > pozadinaSloj;
 
+	void postaviProhodnostAuto();
 	bool prohodan = true;
 };
 
